@@ -76,7 +76,7 @@ async def run(address, loop, data_storage, debug=False):
 if __name__ == "__main__":
     import os
 
-    os.environ["PYTHONASYNCIODEBUG"] = str(1)
+    os.environ["ASYNCIOTEST"] = str(1)
     loop = asyncio.get_event_loop()
 
     output = []
