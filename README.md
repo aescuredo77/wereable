@@ -4,7 +4,7 @@ First steps with Arduino nano 33 sense BLE, as an example we will use it to make
 ![](./pictures/arduinonano.jpg)
 
 
-### Description ###
+## Description ##
 
 The board for less than € 35 it i a very interesting option to do projects and offers a number of sensors:
 
@@ -27,7 +27,7 @@ The board for less than € 35 it i a very interesting option to do projects and
 
 The example that we are going to use is a simple code where we will find the value of the IMU in a string and we will publish it in the central. And from the computer we will send a simple char that will control the status of the arduino's led.
 
-### Libraries instalation  ###
+## Libraries instalation  ##
 
 It can be a bit cumbersome to install all the libraries involved in using the Arduino nano 33 Sense. If you follow the [tutorial](https://www.arduino.cc/en/Guide/NANO33BLESense) on the arduino page it is simple.
 
@@ -50,11 +50,11 @@ On the computer we are going to use python, for this we will install the bleak l
   pip install aioconsole
 ```
 
-### Code ### 
+## Code ## 
 
 In short, in the Arduino we are going to have to create a series of services with some properties, read, write or notification. And from the Python program in Windows we will connect to those services when we need them and we will obtain the data.
 
-#### Arduino ####
+### Arduino ###
 
 ```ruby
   #include <ArduinoBLE.h>
@@ -159,7 +159,7 @@ And finally we have the loop, where we manage what to do once someone has connec
 ```
 The Arduino Ide takes time to compile and then this board has another peculiarity, it has two ports, one for monitoring and the other for programming, pressing the reset twice in a row enters programming mode, select that port to send the program. Once done you will have to change to the other port to look at the serial.
 
-#### Python ####
+### Python ###
 
 The calls to the services to be made are asynchronous, and the program will stop to wait for the LED control instruction. If 'x' is sent, it will break the loop, disconnect and exit the program.
 
@@ -226,7 +226,7 @@ Once connected, the data contains 64 bytes, which is how we have defined the buf
 We receive 64 bytes in a bytearray, by means of a Split we separate them by commas and the value msg [9] is disposable, they are all zero. The rest we convert to float values in this case. And we visualize in terminal by means of the print.
 
 
-### Update ###
+## Update ##
 
 Sometimes the bluetooth stays connected even though the Python program has stopped, which forces you to reset the arduino manually. One way to prevent this from happening is to program it to reset every X time. If your application allows this type of behavior, here we explain how.
 
